@@ -14,4 +14,4 @@ import "angular-ui-router";
 
 
 import "./app.main";
-import "./myMessage.controller";
+import "./myMessage.component";
