@@ -15,8 +15,3 @@ export class myMessageComponent {
   }
 }
 
-angular
-  .module("codecraft")
-  .directive("myMessage", downgradeComponent({
-    component: myMessageComponent
-  }));
