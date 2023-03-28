@@ -1,19 +1,22 @@
 import * as angular from "angular";
+import { Component } from "@angular/core";
+import { downgradeComponent } from "@angular/upgrade/static";
 
-let myMessageComponent = {
+@Component({
   selector: "myMessage", // maps to <my-message> in html
   template: `
-    <h1>{{$ctrl.message}}</h1>
-  `,
-  bindings: {},
-  controller: class myMessageController {
-    public message: string;
-    constructor() {
-      this.message = "HELLO WORLD!";
-    }
+    <h1>{{message}}</h1>
+  `
+})
+export class myMessageComponent {
+  public message: string;
+  constructor() {
+    this.message = "HELLO WORLD!";
   }
 }
 
 angular
   .module("codecraft")
-  .component(myMessageComponent.selector, myMessageComponent);
+  .directive("myMessage", downgradeComponent({
+    component: myMessageComponent
+  }));

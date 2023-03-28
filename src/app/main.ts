@@ -15,3 +15,37 @@ import "angular-ui-router";
 
 import "./app.main";
 import "./myMessage.component";
+import "./polyfills";
+
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {UpgradeModule} from '@angular/upgrade/static';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { myMessageComponent } from "./myMessage.component";
+
+@NgModule({
+    imports: [
+        BrowserModule,
+        UpgradeModule
+    ],
+    declarations: [
+        myMessageComponent
+    ],
+    entryComponents: [
+        myMessageComponent
+    ]
+})
+
+export class AppModule {
+    // override Angular Bootstrap so it doesn't do anything
+    ngDoBootstrap() {
+
+    }
+}
+
+// Bootstrap using the UpgradeModule
+platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
+    console.log("Bootstrapping in Hybrid mode with Angular & AngularJS");
+    const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
+    upgrade.bootstrap(document.body, ['codecraft']);
+})
