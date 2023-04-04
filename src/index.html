@@ -4,7 +4,6 @@
 <head>
   <title>Contacts</title>
   <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/paper.css" rel="stylesheet">
   <link href="libs/bootstrap-additions/dist/bootstrap-additions.min.css" rel="stylesheet">
   <link href="libs/AngularJS-Toaster/toaster.min.css" rel="stylesheet">
   <link href="libs/ladda/dist/ladda-themeless.min.css" rel="stylesheet">
@@ -13,40 +12,11 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">Contacts
-        </a>
-      </div>
-
-      <div ui-view="search">
-      </div>
-
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li ui-sref-active="active">
-            <a ui-sref="list">Search</a>
-          </li>
-          <li ui-sref-active="active">
-            <a ui-sref="create">Create</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </nav>
-
-  <div class="container main-content">
-
-    <toaster-container></toaster-container>
-
-    <div class="row">
-
-      <div ui-view="main">
-      </div>
-
-    </div>
+  <div ng-controller="introductionController">
+    <h1>{{data.name}}</h1>
+    <extra-details></extra-details>
+    <my-avatar></my-avatar>
+    <pet-details></pet-details>
   </div>
 
   <!-- Angular -->
@@ -68,11 +38,16 @@
 
   <!-- App -->
   <script src="app/app.main.js"></script>
-  <script src="app/services.js"></script>
-  <script src="app/controllers.js"></script>
-  <script src="app/directives.js"></script>
+  <script src="app/services/data.service.js"></script>
+  <script src="app/controllers/introduction.controller.js"></script>
+  <script src="app/controllers/my-pet.controller.js"></script>
+  <script src="app/directives/extra-details.directive.js"></script>
+  <script src="app/directives/my-avatar.directive.js"></script>
+  <script src="app/directives/pet-details.directive.js"></script>
+  
+  <!-- <script src="app/directives.js"></script>
   <script src="app/filters.js"></script>
-  <script src="app/app.routes.js"></script>
+  <script src="app/app.routes.js"></script> -->
 
 </body>
 
